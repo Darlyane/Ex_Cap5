@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" href="/style2.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<form class="form-horizontal">
+<fieldset>
+<div class="panel-default class">
+    <div class="panel-heading">Atualizar Dados</div>
+    
+    <div class="panel-body">
+<div class="form-group">
+
+<div class="col-md-11 control-label">
+        <p class="help-block"><h11>*</h11> Campo Obrigatório </p>
+</div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>  
+  <div class="col-md-8">
+  <input id="Nome" name="Nome" placeholder="" class="form-control input-md" required="" type="text">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-2 control-label" for="Nome">CPF <h11>*</h11></label>  
+  <div class="col-md-2">
+  <input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="11" pattern="[0-9]+$">
+  </div>
+  
+  <label class="col-md-1 control-label" for="Nome">Nascimento<h11>*</h11></label>  
+  <div class="col-md-2">
+  <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+</div>
+
+<!-- Multiple Radios (inline) -->
+
+  <label class="col-md-1 control-label" for="radios">Sexo <h11>*</h11></label>
+  <div class="col-md-4"> 
+    <label required="" class="radio-inline" for="radios-0" >
+      <input name="sexo" id="sexo" value="feminino" type="radio" required>
+      Feminino
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input name="sexo" id="sexo" value="masculino" type="radio">
+      Masculino
+    </label>
+  </div>
+</div>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-2 control-label" for="prependedtext">Peso (kg)<h11>*</h11></label>
+  <div class="col-md-2">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+      <input id="prependedtext" name="prependedtext" class="form-control" required="" type="text" maxlength="4" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$">
+    </div>
+  </div>
+  
+    <label class="col-md-1 control-label" for="prependedtext">Altura (m)<h11>*</h11></label>
+     <div class="col-md-2">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+      <input id="prependedtext" name="prependedtext" class="form-control" type="text" maxlength="4"  pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{1,2}$">
+    </div>
+  </div>
+ <label class="col-md-1 control-label" for="Nome">Data<h11>*</h11></label>  
+  <div class="col-md-2">
+  <input id="dtatual" name="dtatual" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)"pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{1,2}$">
+</div>
+</div>
+<p>
+
+</p>
+<!-- Select Basic -->
+<div class="form-group">
+    <label required="" class="radio-inline" for="radios-0" ></label>
+  <label class="col-md-2 control-label" for="Frequência Treino">Frequência do treino<h11>*</h11></label>
+  <div class="col-md-2">
+    <select required id="Frequência Treino" name="Frequência Treino" class="form-control">
+        <option value=""></option>
+      <option value="1 x na semana">1 x na semana</option>
+      <option value="2 x na semana">2 x na semana</option>
+      <option value="3 x na semana">3 x na semana</option>
+      <option value="4 x na semana">4 x na semana</option>
+      <option value="5 x na semana ou +">5 x na semana ou mais</option>
+    </select>
+  </div>
+  
+  <!-- Prepended checkbox -->
+
+  <label class="col-md-2 control-label" for="Sedentária">Sedentário(a)?<h11>*</h11></label>
+  <div class="col-md-3">
+    <div class="input-group">
+      <span class="input-group-addon">     
+        <label class="radio-inline" for="radios-0">
+      <input type="radio" name="tempo" id="tempo" value="nao" onclick="desabilita('tempo')" required>
+      Não
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="tempo" id="tempo" value="sim" onclick="habilita('tempo')">
+      Sim
+    </label>
+      </span>
+      <input id="tempo" name="tempo" class="form-control" type="text" placeholder="Quantos meses?" pattern="[0-9]+$" >
+      
+    </div>
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label" for="deficiencia">Deficiência? <h11>*</h11></label>
+  <div class="col-md-3">
+    <div class="input-group">
+      <span class="input-group-addon">     
+        <label class="radio-inline" for="radios-0">
+      <input type="radio" name="enc" id="enc" value="Nao" onclick="desabilita('tp_deficiencia')" required>
+      Não
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="enc" id="enc" value="sim" onclick="habilita('tp_deficiencia')">
+      Sim
+    </label>
+      </span>
+      <input id="tp_deficiencia" name="enc" class="form-control" type="text" placeholder="Deficiência" >
+      
+    </div>
+    
+  </div>
+  
+  
+   <label class="col-md-2 control-label" for="outros">Outro problema de saúde?<h11>*</h11></label>
+  <div class="col-md-3">
+    <div class="input-group">
+      <span class="input-group-addon">     
+        <label class="radio-inline" for="radios-4">
+      <input type="radio" name="aluno" id="enc" value="Nao" required>
+      Não
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="aluno" id="enc" value="sim">
+      Sim
+    </label>
+      </span>
+      <input id="enc" name="Outros" class="form-control" type="text" placeholder="Outros" >
+      
+    </div>
+    
+  </div>
+  
+  
+ </div>
+ 
+ <div class="form-group">
+    <label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+    <div class="col-md-2">
+      <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" required="" value="" type="search" maxlength="9" pattern="[0-9]+$">
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary" onclick="pesquisacep(cep.value)">Pesquisar</button>
+      </div>
+  </div>
+  
+  <!-- Prepended text-->
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="prependedtext">Endereço</label>
+    <div class="col-md-4">
+      <div class="input-group">
+        <span class="input-group-addon">Rua</span>
+        <input id="rua" name="rua" class="form-control" placeholder="" required="" type="text">
+      </div>
+      
+    </div>
+      <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">Nº <h11>*</h11></span>
+        <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text">
+      </div>
+      
+    </div>
+    
+    <div class="col-md-3">
+      <div class="input-group">
+        <span class="input-group-addon">Bairro</span>
+        <input id="bairro" name="bairro" class="form-control" placeholder="" required="" type="text">
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="prependedtext"></label>
+    <div class="col-md-4">
+      <div class="input-group">
+        <span class="input-group-addon">Cidade</span>
+        <input id="cidade" name="cidade" class="form-control" placeholder="" required="" type="text">
+      </div>
+      
+    </div>
+    
+     <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">Estado</span>
+        <input id="estado" name="estado" class="form-control" placeholder="" required="" type="text" pattern="[0-9]+$">
+    </div>
+    </div>
+    <div class="col-md-3">
+      <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+          </span>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" required="required"type="text" pattern="[0-9]+$">
+        </div>
+      </div>
+  </div>
+</div>
+    <div class="container">
+      <div class="col-md-12">
+        <div class="configdiv">
+        <label><input id="Check1" name="Check1" type="checkbox" value="Check1">Desejo receber informações sobre eventos esportivos na minha cidade.</input></label>  
+    </div>
+  </div>
+</body>
+</html>
